@@ -1,0 +1,276 @@
+/* =====================
+   RESET & BASE
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #ffffff;
+    color: #222;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 25, 47, 0.95);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: #f4b400;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+/* hide checkbox */
+#nav-toggle {
+    display: none;
+}
+
+/* =====================
+   HAMBURGER → X
+===================== */
+.hamburger {
+    width: 32px;
+    height: 22px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.hamburger span {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #ffffff;
+    left: 0;
+    transition: all 0.4s ease;
+    border-radius: 5px;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
+
+/* X animation */
+#nav-toggle:checked + .hamburger span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 9px;
+}
+
+#nav-toggle:checked + .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+#nav-toggle:checked + .hamburger span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 9px;
+}
+
+/* =====================
+   SIDE NAV SLIDER
+===================== */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(180deg, #0a192f, #020c1b);
+    padding-top: 110px;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* open sidebar */
+#nav-toggle:checked ~ .nav-menu {
+    right: 0;
+}
+
+.nav-menu a {
+    color: #ffffff;
+    padding: 18px 30px;
+    text-decoration: none;
+    font-size: 1.15rem;
+    transition: background 0.3s, color 0.3s;
+}
+
+.nav-menu a:hover {
+    background: #f4b400;
+    color: #000;
+}
+
+/* =====================
+   HERO
+===================== */
+.hero {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("https://images.unsplash.com/photo-1504307651254-35680f356dfd")
+        center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.hero-content {
+    text-align: center;
+    color: #ffffff;
+    animation: fadeUp 1.2s ease;
+}
+
+.hero h1 {
+    font-size: 3rem;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin: 15px 0;
+}
+
+.btn {
+    background: #f4b400;
+    color: #000;
+    padding: 14px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* =====================
+   SECTIONS
+===================== */
+.section {
+    padding: 90px 20px;
+}
+
+.light {
+    background: #f7f7f7;
+}
+
+.dark {
+    background: #0a192f;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* =====================
+   GRIDS
+===================== */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.box {
+    background: #ffffff;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.dark .box {
+    background: #f4b400;
+    color: #000;
+}
+
+/* =====================
+   IMAGES
+===================== */
+img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+    background: #000;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* =====================
+   ANIMATIONS
+===================== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 992px) {
+    .grid-4 {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+}
