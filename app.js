@@ -9,8 +9,8 @@ const fs = require("fs");
 
 dotenv.config();
 
-// const Construction = require("");
-// const Paint = require("./models/Paint");
+const constructionModel = require("./models/construction");
+const tradersModel = require("./models/traders");
 
 app.set("view engine", "ejs");
 
@@ -44,7 +44,8 @@ const upload = multer({ storage });
 app.get("/", (req, res) => res.render("home"));
 
 app.get("/construction", async (req, res) => {
-  res.render("construction");
+  const constructions = await constructionModel.find();
+  res.render("construction", { constructions });
 });
 
 app.get("/traders", async (req, res) => {
@@ -73,88 +74,117 @@ app.post("/admin", (req, res) => {
 /* DASHBOARD */
 app.get("/dashboard", async (req, res) => {
   if (!req.session.admin) return res.redirect("/admin");
+  const constructions = await constructionModel.find();
 
-//   const tiles = await Tile.find();
-//   const paints = await Paint.find();
-
-  res.render("admin-dashboard");
+  res.render("admin-dashboard",  { constructions });
 });
 
-/* TILE */
-// app.post("/add-tile", upload.single("image"), async (req, res) => {
-//   try {
-//     await Tile.create({
-//       name: req.body.name,
-//       category: req.body.category,
-//       size: req.body.size,
-//       price: req.body.price,
-//       mobile: req.body.mobile, // ✅
-//       location: req.body.location, // ✅
-//       image: "/uploads/" + req.file.filename,
-//     });
+app.post(
+  "/add-construction",
+  upload.fields([
+    { name: "fullImage", maxCount: 1 },
+    { name: "elevation", maxCount: 1 },
+    { name: "bedRoom", maxCount: 1 },
+    { name: "kitchen", maxCount: 1 },
+    { name: "bathRoom", maxCount: 1 },
+    { name: "otherImage", maxCount: 1 },
+  ]),
+  async (req, res) => {
+    try {
+      if (!req.session.admin) return res.redirect("/admin");
 
-//     res.redirect("/dashboard");
-//   } catch (err) {
-//     console.log(err);
-//     res.redirect("/dashboard");
-//   }
-// });
+      const construction = new constructionModel({
+        customerName: req.body.customerName,
+        customerNumber: req.body.customerNumber,
 
-// app.post("/delete-tile/:id", async (req, res) => {
-//   try {
-//     const tile = await Tile.findById(req.params.id);
+        cityName: req.body.cityName,
+        location: req.body.location,
 
-//     if (tile?.image) {
-//       const imagePath = path.join(__dirname, "public", tile.image);
+        squareFeetBudget: req.body.squareFeetBudget,
+        totalBudget: req.body.totalBudget,
 
-//       fs.unlink(imagePath, (err) => {
-//         if (err) console.log("Tile image delete error:", err.message);
-//       });
-//     }
+        fullImage: req.files.fullImage
+          ? "/uploads/" + req.files.fullImage[0].filename
+          : "",
 
-//     await Tile.findByIdAndDelete(req.params.id);
-//     res.redirect("/dashboard");
-//   } catch (err) {
-//     console.error(err);
-//     res.redirect("/dashboard");
-//   }
-// });
+        elevation: req.files.elevation
+          ? "/uploads/" + req.files.elevation[0].filename
+          : "",
 
-/* PAINT */
-// app.post("/add-paint", upload.single("image"), async (req, res) => {
-//   await Paint.create({
-//     name: req.body.name,
-//     category: req.body.category,
-//     litter: req.body.size,
-//     price: req.body.price,
-//     mobile: req.body.mobile,
-//     location: req.body.location,
-//     image: "/uploads/" + req.file.filename,
-//   });
+        bedRoom: req.files.bedRoom
+          ? "/uploads/" + req.files.bedRoom[0].filename
+          : "",
 
-//   res.redirect("/dashboard");
-// });
+        kitchen: req.files.kitchen
+          ? "/uploads/" + req.files.kitchen[0].filename
+          : "",
 
-// app.post("/delete-paint/:id", async (req, res) => {
-//   try {
-//     const paint = await Paint.findById(req.params.id);
+        bathRoom: req.files.bathRoom
+          ? "/uploads/" + req.files.bathRoom[0].filename
+          : "",
 
-//     if (paint?.image) {
-//       const imagePath = path.join(__dirname, "public", paint.image);
+        otherImage: req.files.otherImage
+          ? "/uploads/" + req.files.otherImage[0].filename
+          : "",
+      });
 
-//       fs.unlink(imagePath, (err) => {
-//         if (err) console.log("Paint image delete error:", err.message);
-//       });
-//     }
+      await construction.save();
+      res.redirect("/dashboard");
 
-//     await Paint.findByIdAndDelete(req.params.id);
-//     res.redirect("/dashboard");
-//   } catch (err) {
-//     console.error(err);
-//     res.redirect("/dashboard");
-//   }
-// });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Error adding construction project");
+    }
+  }
+);
+
+app.post("/delete-construction/:id", async (req, res) => {
+  try {
+    if (!req.session.admin) return res.redirect("/admin");
+
+    const construction = await constructionModel.findById(req.params.id);
+    if (!construction) return res.redirect("/dashboard");
+
+    const deleteFile = (filePath) => {
+      try {
+        if (!filePath) return;
+
+        const cleanPath = filePath.startsWith("/")
+          ? filePath.substring(1)
+          : filePath;
+
+        const fullPath = path.join(__dirname, "public", cleanPath);
+
+        if (fs.existsSync(fullPath)) {
+          fs.unlinkSync(fullPath);
+        }
+      } catch (err) {
+        console.error("File delete error:", err);
+      }
+    };
+
+    deleteFile(construction.fullImage);
+    deleteFile(construction.elevation);
+    deleteFile(construction.bedRoom);
+    deleteFile(construction.kitchen);
+    deleteFile(construction.bathRoom);
+    deleteFile(construction.otherImage);
+
+    await constructionModel.findByIdAndDelete(req.params.id);
+
+    res.redirect("/dashboard");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error deleting construction project");
+  }
+});
+
+
+
+
+
+
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server running on ${process.env.PORT} 🚀`);
+  console.log(`Server running on http://localhost:${process.env.PORT} 🚀`);
 });

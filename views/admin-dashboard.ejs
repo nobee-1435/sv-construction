@@ -1,11 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <title>Admin - Construction</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
 </head>
 <body>
-    <p>this is admin-dashboard page</p>
+
+<div class="admin-container">
+
+  <aside class="sidebar">
+    <h2>Admin</h2>
+    <button class="menu-btn active">🏗 Construction</button>
+  </aside>
+
+  <main class="content">
+
+    <section class="section">
+
+      <h3>Add Construction Project</h3>
+
+      <form action="/add-construction"
+            method="POST"
+            enctype="multipart/form-data"
+            class="form">
+
+        <input name="customerName" placeholder="Customer Name" required />
+        <input name="customerNumber" placeholder="Customer Number" maxlength="10" required />
+
+        <input name="cityName" placeholder="City Name" required />
+        <input name="location" placeholder="Location" required />
+
+
+
+        <input name="squareFeetBudget" placeholder="Sq.ft Budget" required />
+        <input name="totalBudget" placeholder="Total Budget" required />
+
+        <label>Main Image</label>
+        <input type="file" name="fullImage" required />
+
+        <label>Elevation Image</label>
+        <input type="file" name="elevation" required />
+
+        <label>BedRoom Image</label><input name="bedRoom" type="file" placeholder="Bedroom" required />
+        <label>Kitchen Image</label><input name="kitchen" type="file" placeholder="Kitchen" required />
+        <label>Bathroom Image</label><input name="bathRoom" type="file" placeholder="Bathroom" required />
+        <label>Other Image</label><input name="otherImage" type="file" placeholder="otherImage" required />
+
+        <button>Add Project</button>
+      </form>
+
+      <div class="card-grid">
+        <% constructions.forEach(c => { %>
+        <div class="card">
+          <img src="<%= c.fullImage %>" />
+          <p><%= c.customerName %></p>
+          <small><%= c.cityName %></small>
+          <strong>₹ <%= c.totalBudget %></strong>
+
+          <form action="/delete-construction/<%= c._id %>" method="POST">
+            <button class="danger">Delete</button>
+          </form>
+        </div>
+        <% }) %>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
 </body>
 </html>

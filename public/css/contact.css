@@ -1,0 +1,120 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+}
+
+/* wrapper */
+.contact-wrapper{
+width:100%;
+padding:20px;
+text-align:center;
+}
+
+.title{
+color:white;
+margin-bottom:25px;
+font-size:32px;
+}
+
+/* card */
+.contact-card{
+max-width:420px;
+margin:auto;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+border-radius:20px;
+padding:30px 25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+color:white;
+transition:.4s;
+}
+
+.contact-card:hover{
+transform:translateY(-8px);
+}
+
+.contact-card h2{
+margin-bottom:15px;
+}
+
+/* address */
+.address{
+opacity:.85;
+line-height:1.6;
+margin-bottom:20px;
+}
+
+/* info */
+.info p{
+margin:12px 0;
+font-size:16px;
+}
+
+.info a{
+color:#38bdf8;
+text-decoration:none;
+}
+
+.info i{
+margin-right:8px;
+}
+
+/* map button */
+.map-btn{
+display:inline-block;
+margin-top:15px;
+background:#22c55e;
+color:white;
+padding:12px 26px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.map-btn:hover{
+background:#16a34a;
+}
+
+/* social icons */
+.social{
+margin-top:25px;
+}
+
+.social a{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+width:45px;
+height:45px;
+margin:0 8px;
+border-radius:50%;
+font-size:18px;
+color:white;
+transition:.3s;
+}
+
+/* colors */
+.yt{background:#ff0000;}
+.ig{background:#e1306c;}
+.fb{background:#1877f2;}
+
+.social a:hover{
+transform:scale(1.15);
+}
+
+/* mobile */
+@media(max-width:480px){
+.title{font-size:24px;}
+.contact-card{padding:25px 18px;}
+}

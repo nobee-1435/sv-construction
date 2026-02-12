@@ -160,6 +160,138 @@ body {
 /* =====================
    SECTIONS
 ===================== */
+
+/* ===============================
+   TRADING MATERIALS SECTION
+================================ */
+
+.section.light {
+  background: linear-gradient(135deg, #f9fafb, #eef2f7);
+  padding: 80px 20px;
+}
+
+.section.light h2 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 50px;
+  position: relative;
+  animation: fadeDown 1s ease forwards;
+}
+
+.section.light h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #f59e0b, #f97316);
+  margin: 14px auto 0;
+  border-radius: 2px;
+}
+
+/* ===============================
+   GRID
+================================ */
+.grid-2 {
+  max-width: 900px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+/* ===============================
+   LIST STYLE
+================================ */
+.grid-2 ul {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 30px 25px;
+  list-style: none;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.grid-2 ul li {
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #374151;
+  position: relative;
+  padding-left: 30px;
+  transition: 0.3s ease;
+}
+
+/* ICON BULLET */
+.grid-2 ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  color: #f59e0b;
+  font-weight: bold;
+}
+
+/* HOVER EFFECT */
+.grid-2 ul li:hover {
+  transform: translateX(6px);
+  color: #111827;
+}
+
+/* ===============================
+   ANIMATIONS
+================================ */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .section.light h2 {
+    font-size: 28px;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-2 ul li {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section.light {
+    padding: 60px 15px;
+  }
+
+  .grid-2 ul {
+    padding: 25px 20px;
+  }
+}
+
 .section {
     padding: 90px 20px;
 }
@@ -173,10 +305,7 @@ body {
     color: #ffffff;
 }
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-}
+
 
 h2 {
     text-align: center;
@@ -186,11 +315,6 @@ h2 {
 /* =====================
    GRIDS
 ===================== */
-.grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 25px;
-}
 
 .grid-3 {
     display: grid;
@@ -238,6 +362,11 @@ footer {
     color: #ffffff;
     text-align: center;
     padding: 20px;
+    line-height: 30px;
+}
+
+.my-contact{
+    color: blue;
 }
 
 /* =====================

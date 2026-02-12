@@ -1,11 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <title>Construction Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="/css/construction.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
+
 <body>
-    <p>this is contstructions page</p>
+
+  <header class="page-header">
+    <span onclick="history.back()" class="back-arrow">←</span>
+    <h1>Construction Projects</h1>
+  </header>
+
+  <section class="construction-grid">
+
+    <% constructions.forEach(c=> { %>
+
+      <div class="construction-card">
+
+        <img class="main-img clickable-img" src="<%= c.fullImage %>" />
+
+        <div class="images">
+          <a href="<%= c.elevation %>" class="lightbox">
+            <img src="<%= c.elevation %>" />
+          </a>
+
+          <a href="<%= c.bedRoom %>" class="lightbox">
+            <img src="<%= c.bedRoom %>" />
+          </a>
+
+          <a href="<%= c.kitchen %>" class="lightbox">
+            <img src="<%= c.kitchen %>" />
+          </a>
+
+          <a href="<%= c.bathRoom %>" class="lightbox">
+            <img src="<%= c.bathRoom %>" />
+          </a>
+        </div>
+
+
+        <h3>
+          <%= c.cityName %>
+        </h3>
+        <a class="location-link" href="<%= c.location %>" target="_self">
+          <i class="fa fa-location-dot"></i> Client Location
+        </a>
+
+
+
+
+
+        <div class="budget">
+          <p>📐 Sq.ft Budget: ₹ <%= c.squareFeetBudget %>
+          </p>
+          <p>💰 Total Budget: ₹ <%= c.totalBudget %>
+          </p>
+        </div>
+
+        <div class="contact">
+          <strong>
+            <%= c.customerName %>
+          </strong><br />
+          <a href="tel:<%= c.customerNumber %>">
+            <i class="fa fa-phone"></i>
+            <%= c.customerNumber %>
+          </a>
+        </div>
+
+      </div>
+
+      <% }) %>
+
+  </section>
+
 </body>
+
 </html>
