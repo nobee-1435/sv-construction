@@ -121,41 +121,109 @@ body {
 /* =====================
    HERO
 ===================== */
+/* HERO SECTION */
 .hero {
     min-height: 100vh;
     background:
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
         url("https://images.unsplash.com/photo-1504307651254-35680f356dfd")
         center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:100px 20px 40px;
 }
 
-.hero-content {
-    text-align: center;
-    color: #ffffff;
-    animation: fadeUp 1.2s ease;
+/* CONTENT */
+.hero-content{
+    text-align:center;
+    color:#fff;
+    animation:fadeUp 1.2s ease;
+    max-width:900px;
+    width:100%;
 }
 
-.hero h1 {
-    font-size: 3rem;
+/* TITLE */
+.hero h1{
+    font-size:clamp(1.8rem,5vw,3.2rem);
+    letter-spacing:1px;
+    color: rgb(235, 17, 235);
 }
 
-.hero p {
-    font-size: 1.3rem;
-    margin: 15px 0;
+/* SUBTEXT */
+.hero p{
+    font-size:clamp(1rem,2.5vw,1.3rem);
+    margin:15px 0 25px;
+    opacity:.9;
+    color: rgb(248, 116, 248);
 }
 
-.btn {
-    background: #f4b400;
-    color: #000;
-    padding: 14px 32px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
+/* BUTTON WRAPPER */
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
 }
+
+/* BUTTON */
+.btn{
+    background:#f4b400;
+    color:#000;
+    padding:14px 32px;
+    border-radius:40px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+    white-space:nowrap;
+}
+
+/* HOVER */
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+
+/* TABLET */
+@media(max-width:768px){
+
+    .hero{
+        padding-top:120px;
+    }
+
+    .hero-buttons{
+        gap:12px;
+    }
+
+    .btn{
+        padding:12px 24px;
+        font-size:15px;
+    }
+}
+
+
+/* MOBILE */
+@media(max-width:480px){
+
+    .hero{
+        padding-top:140px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:85%;
+        text-align:center;
+        font-size:15px;
+        padding:13px;
+    }
+}
+
+
 
 /* =====================
    SECTIONS
