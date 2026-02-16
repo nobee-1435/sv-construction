@@ -26,17 +26,33 @@ margin-bottom:25px;
 font-size:32px;
 }
 
+.back-arrow {
+  font-size: 30px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.3s;
+  color: white;
+  position: relative;
+  right: 47%;
+}
+
+.back-arrow:hover {
+  background: #000000;
+}
+
 /* card */
 .contact-card{
 max-width:420px;
 margin:auto;
-background:rgba(255,255,255,0.08);
+background: #cf9800;
 backdrop-filter:blur(12px);
 border-radius:20px;
 padding:30px 25px;
 box-shadow:0 10px 30px rgba(0,0,0,0.4);
-color:white;
+color:rgb(0, 0, 0);
 transition:.4s;
+font-weight: 700;
 }
 
 .contact-card:hover{
@@ -61,7 +77,7 @@ font-size:16px;
 }
 
 .info a{
-color:#38bdf8;
+color: blue;
 text-decoration:none;
 }
 
@@ -73,7 +89,7 @@ margin-right:8px;
 .map-btn{
 display:inline-block;
 margin-top:15px;
-background:#22c55e;
+background:#c52822;
 color:white;
 padding:12px 26px;
 border-radius:30px;
@@ -83,7 +99,7 @@ transition:.3s;
 }
 
 .map-btn:hover{
-background:#16a34a;
+background:#f84141;
 }
 
 /* social icons */
@@ -115,7 +131,7 @@ transform:scale(1.15);
 
 /* mobile */
 @media(max-width:480px){
-.title{font-size:24px;}
+.title{font-size:24px;} 
 .contact-card{padding:25px 18px;}
 }
 

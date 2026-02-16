@@ -14,8 +14,7 @@ const constructionSchema = new mongoose.Schema({
   customerName: String,
   customerNumber: String,
 
-  squareFeetBudget: String,
-  totalBudget: String,
+
 
   createdAt: {
     type: Date,

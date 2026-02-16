@@ -34,8 +34,6 @@
 
 
 
-        <input name="squareFeetBudget" placeholder="Sq.ft Budget" required />
-        <input name="totalBudget" placeholder="Total Budget" required />
 
         <label>Main Image</label>
         <input type="file" name="fullImage" required />
@@ -57,7 +55,7 @@
           <img src="<%= c.fullImage %>" />
           <p><%= c.customerName %></p>
           <small><%= c.cityName %></small>
-          <strong>₹ <%= c.totalBudget %></strong>
+        
 
           <form action="/delete-construction/<%= c._id %>" method="POST">
             <button class="danger">Delete</button>

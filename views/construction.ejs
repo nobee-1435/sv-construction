@@ -41,26 +41,20 @@
           <a href="<%= c.bathRoom %>" class="lightbox">
             <img src="<%= c.bathRoom %>" />
           </a>
+
+          <a href="<%= c.otherImage %>" class="lightbox">
+            <img src="<%= c.otherImage %>" />
+          </a>
         </div>
 
 
         <h3>
           <%= c.cityName %>
         </h3>
-        <a class="location-link" href="<%= c.location %>" target="_self">
+        <a class="location-link" href="<%= c.location %>" target="_blank">
           <i class="fa fa-location-dot"></i> Client Location
         </a>
 
-
-
-
-
-        <div class="budget">
-          <p>📐 Sq.ft Budget: ₹ <%= c.squareFeetBudget %>
-          </p>
-          <p>💰 Total Budget: ₹ <%= c.totalBudget %>
-          </p>
-        </div>
 
         <div class="contact">
           <strong>

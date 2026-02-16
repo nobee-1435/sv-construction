@@ -100,8 +100,6 @@ app.post(
         cityName: req.body.cityName,
         location: req.body.location,
 
-        squareFeetBudget: req.body.squareFeetBudget,
-        totalBudget: req.body.totalBudget,
 
         fullImage: req.files.fullImage
           ? "/uploads/" + req.files.fullImage[0].filename
