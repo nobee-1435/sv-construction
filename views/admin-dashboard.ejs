@@ -1,73 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <title>Admin - Construction</title>
+  <title>Admin | Sakthi Vinayaga Construction & Traders</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="icon" href="images/sv logo.jpeg" type="image/png">
 </head>
+
 <body>
 
-<div class="admin-container">
+  <div class="admin-container">
 
-  <aside class="sidebar">
-    <h2>Admin</h2>
-    <button class="menu-btn active">🏗 Construction</button>
-  </aside>
+    <aside class="sidebar">
+      <h2>Admin</h2>
+      <button class="menu-btn active">🏗 Construction</button>
+    </aside>
 
-  <main class="content">
+    <main class="content">
 
-    <section class="section">
+      <section class="section">
 
-      <h3>Add Construction Project</h3>
+        <h3>Add Construction Project</h3>
 
-      <form action="/add-construction"
-            method="POST"
-            enctype="multipart/form-data"
-            class="form">
+        <form action="/add-construction" method="POST" enctype="multipart/form-data" class="form">
 
-        <input name="customerName" placeholder="Customer Name" required />
-        <input name="customerNumber" placeholder="Customer Number" maxlength="10" required />
+          <input name="customerName" placeholder="Customer Name" required />
+          <input name="customerNumber" placeholder="Customer Number" maxlength="10" required />
 
-        <input name="cityName" placeholder="City Name" required />
-        <input name="location" placeholder="Location" required />
+          <input name="cityName" placeholder="City Name" required />
+          <input name="location" placeholder="Location" required />
 
 
 
 
-        <label>Main Image</label>
-        <input type="file" name="fullImage" required />
+          <label>Main Image</label>
+          <input type="file" name="fullImage" required />
 
-        <label>Elevation Image</label>
-        <input type="file" name="elevation" required />
+          <label>Elevation Image</label>
+          <input type="file" name="elevation" required />
 
-        <label>BedRoom Image</label><input name="bedRoom" type="file" placeholder="Bedroom" required />
-        <label>Kitchen Image</label><input name="kitchen" type="file" placeholder="Kitchen" required />
-        <label>Bathroom Image</label><input name="bathRoom" type="file" placeholder="Bathroom" required />
-        <label>Other Image</label><input name="otherImage" type="file" placeholder="otherImage" required />
+          <label>BedRoom Image</label><input name="bedRoom" type="file" placeholder="Bedroom" required />
+          <label>Kitchen Image</label><input name="kitchen" type="file" placeholder="Kitchen" required />
+          <label>Bathroom Image</label><input name="bathRoom" type="file" placeholder="Bathroom" required />
+          <label>Other Image</label><input name="otherImage" type="file" placeholder="otherImage" required />
 
-        <button>Add Project</button>
-      </form>
+          <button>Add Project</button>
+        </form>
 
-      <div class="card-grid">
-        <% constructions.forEach(c => { %>
-        <div class="card">
-          <img src="<%= c.fullImage %>" />
-          <p><%= c.customerName %></p>
-          <small><%= c.cityName %></small>
-        
+        <div class="card-grid">
+          <% constructions.forEach(c=> { %>
+            <div class="card">
+              <img src="<%= c.fullImage %>" />
+              <p>
+                <%= c.customerName %>
+              </p>
+              <small>
+                <%= c.cityName %>
+              </small>
 
-          <form action="/delete-construction/<%= c._id %>" method="POST">
-            <button class="danger">Delete</button>
-          </form>
+
+              <form action="/delete-construction/<%= c._id %>" method="POST">
+                <button class="danger">Delete</button>
+              </form>
+            </div>
+            <% }) %>
         </div>
-        <% }) %>
-      </div>
 
-    </section>
+      </section>
 
-  </main>
-</div>
+    </main>
+  </div>
 
 </body>
+
 </html>
