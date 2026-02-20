@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
 }
 
 body {
@@ -83,7 +83,7 @@ body {
 
 .hamburger span {
   height: 3px;
-  background: rgb(250, 152, 24);
+  background: rgb(0, 0, 0);
   border-radius: 3px;
 }
 
@@ -151,6 +151,7 @@ body {
   height: 100vh;
   overflow: hidden;
   position: relative;
+  background-color: #f5b400;
 }
 
 /* TRACK */
@@ -167,17 +168,61 @@ body {
   position: relative;
   padding: 120px;
 }
+
+.office-info{
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.office-info.show{
+  animation: blinkShow 0.9s ease forwards;
+}
+
+@keyframes blinkShow{
+  0%{opacity:0; transform:scale(0.95);}
+  50%{opacity:1; transform:scale(1.05);}
+  100%{opacity:1; transform:scale(1);}
+}
+
+
+.slideinfo {
+  /* background-image: url("https://www.freepik.com/free-vector/abstract-background-design_1125389.htm#fromView=keyword&page=2&position=2&uuid=d3af02f2-668c-49b2-aeb6-0ac0124157d9&query=Low+opacity+design");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; */
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 120px;
+  display: flex;
+  flex-direction: row;
+  background-color: #144178;
+  opacity: 0.99;
+}
 .slide img:hover {
   cursor: pointer;
   padding: 5px;
 }
-
 
 /* IMAGE */
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.slideinfo img {
+  width: 60%;
+  height: 50vh;
+  position: relative;
+  right: 1%;
+  object-fit: cover;
+}
+.slideinfo p {
+  line-height: 33px;
+  font-size: 20px;
+  color: #fff;
+  text-indent: 20px;
 }
 
 /* LOCATION TEXT */
@@ -222,7 +267,7 @@ body {
 .location {
   padding: 80px 20px;
   text-align: center;
-  font-family: Poppins, sans-serif;
+  /* font-family: Poppins, sans-serif; */
   background-color: rgb(255, 238, 238);
 }
 
@@ -319,7 +364,7 @@ body {
   }
 }
 @media (max-width: 450px) {
-  .slide{
+  .slide {
     padding: 0px;
   }
   .slide img {

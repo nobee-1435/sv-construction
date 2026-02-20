@@ -10,7 +10,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:Segoe UI, sans-serif;
+  /* font-family:Segoe UI, sans-serif; */
 }
 
 body {
@@ -82,7 +82,7 @@ body {
 
 .brand span {
   font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
   color: #111;
 }
 
