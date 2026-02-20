@@ -167,6 +167,11 @@ body {
   position: relative;
   padding: 120px;
 }
+.slide img:hover {
+  cursor: pointer;
+  padding: 5px;
+}
+
 
 /* IMAGE */
 .slide img {
