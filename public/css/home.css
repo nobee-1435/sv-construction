@@ -179,12 +179,8 @@ body {
 }
 
 /* MOBILE */
-@media (max-width: 1308px) {
-  .nav-links {
-    display: none;
-  }
-}
-@media (max-width: 768px) {
+
+@media (max-width: 1368px) {
   .nav-links {
     display: none;
   }
@@ -225,6 +221,9 @@ body {
     cursor: pointer;
     transition: 0.3s;
     font-family: sans-serif;
+  }
+  .hamburger:hover{
+    background: none;
   }
 
   .hamburger p {
