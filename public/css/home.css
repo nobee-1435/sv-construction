@@ -229,6 +229,28 @@ body {
   .hamburger p {
     display: none;
   }
+    @media (max-width: 425px) {
+    .hamburger .spanDiv{
+      position: relative;
+      margin-left: 50%;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .hamburger .spanDiv{
+      position: relative;
+      margin-left: 50%;
+    }
+  }
+    @media (max-width: 325px) {
+    .hamburger .spanDiv{
+      position: relative;
+      margin-left: 10%;
+    }
+    .spanDiv span:nth-child(1){
+      width: 1px;
+    }
+  }
 
   /* 2 lines */
   .spanDiv {
@@ -357,8 +379,8 @@ body {
     padding: 20px;
   }
   .slideinfo img {
-    width: 100vw;
-    height: 100vh;
+    min-width: 100%;
+    height: 80vh;
     position: relative;
     right: 1%;
     object-fit: contain;
