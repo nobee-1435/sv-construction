@@ -41,7 +41,7 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  background-color: #e80c0c;
+  background-color: #f4b400;
   height: fit-content;
   padding-left: 30px;
   padding-right: 30px;
@@ -282,14 +282,18 @@ body {
     right: 150%;
   }
 }
-
+@media (max-width: 768px){
+  .co{
+    height: 70vh;
+  }
+}
 /* SLIDER */
 .slider {
   width: 100%;
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background-color: #134478;
+  background-color: #0a192f;
 }
 
 /* TRACK */
@@ -370,6 +374,7 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
 .slideinfo {
   gap: 20px;
 }
@@ -400,7 +405,7 @@ body {
   color: rgb(0, 0, 0);
 
   background: rgba(0, 0, 0, 0.35);
-  background-color: #f5b400;
+  background-color: #f4b400;
   backdrop-filter: blur(8px);
   border-radius: 40px;
   letter-spacing: 1px;
