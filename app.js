@@ -10,7 +10,6 @@ const fs = require("fs");
 dotenv.config();
 
 const constructionModel = require("./models/construction");
-const tradersModel = require("./models/traders");
 
 app.set("view engine", "ejs");
 
