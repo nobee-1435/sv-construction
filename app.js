@@ -41,9 +41,6 @@ const upload = multer({ storage });
 
 /* ROUTES */
 
-app.get('/sitemap.xml', (req, res) => {
-  res.sendFile(__dirname + '/sitemap.xml');
-});
 
 app.get("/", (req, res) => res.render("home"));
 
